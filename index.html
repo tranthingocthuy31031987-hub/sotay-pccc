@@ -5,99 +5,92 @@
 <title>Water PCCC</title>
 
 <style>
-
 body{
     font-family: Arial, sans-serif;
     background:#f3f5f7;
     margin:0;
     padding:0;
+    text-align:center;
 }
 
 .header{
     background:#d32f2f;
     color:white;
-    text-align:center;
     padding:25px;
 }
 
-.header h1{
-    margin:0;
-}
-
-.header p{
-    margin-top:8px;
-}
-
-.menu{
-    margin-top:15px;
-}
-
-.menu a{
-    color:white;
-    text-decoration:none;
-    margin:0 15px;
-    font-weight:bold;
-}
-
-.menu a:hover{
-    text-decoration:underline;
-}
-
-.card{
+.login-box, .card{
     background:white;
-    max-width:700px;
+    max-width:600px;
     margin:40px auto;
     padding:30px;
     border-radius:15px;
     box-shadow:0 0 15px rgba(0,0,0,0.1);
 }
 
-.button{
+input{
+    width:80%;
+    padding:15px;
+    font-size:18px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    text-align:center;
+}
+
+button, .button{
     display:block;
     width:80%;
     margin:20px auto;
     padding:18px;
     background:#1976d2;
     color:white;
+    border:none;
     text-decoration:none;
     text-align:center;
     border-radius:10px;
     font-size:18px;
     font-weight:bold;
+    cursor:pointer;
 }
 
-.button:hover{
+button:hover, .button:hover{
     background:#1565c0;
 }
 
+#error{
+    color:red;
+    font-weight:bold;
+}
+
+#mainContent{
+    display:none;
+}
+
 .footer{
-    text-align:center;
-    margin-top:30px;
     color:#666;
     font-size:14px;
 }
-
 </style>
-
 </head>
 
 <body>
 
 <div class="header">
-
 <h1>🔥 WATER PCCC</h1>
-
 <p>Cổng điều hướng ứng dụng Apps Script</p>
-
-<div class="menu">
-
-<a href="index.html">TRANG CHỦ</a>
-
-<a href="gioithieu.html">GIỚI THIỆU</a>
-
 </div>
 
+<div class="login-box" id="loginBox">
+<h2>🔒 NHẬP MÃ TRUY CẬP</h2>
+
+<input type="password" id="passCode" placeholder="Nhập mã...">
+
+<button onclick="checkCode()">XÁC NHẬN</button>
+
+<p id="error"></p>
 </div>
+
+<div id="mainContent">
 
 <div class="card">
 
@@ -116,15 +109,24 @@ target="_blank">
 </div>
 
 <div class="footer">
-
 <p>Cập nhật: 31/05/2026</p>
-
-<p>
-Designed by<br>
-Trần Thị Ngọc Thủy - PC07
-</p>
+<p>Designed by<br>Trần Thị Ngọc Thủy - PC07</p>
+</div>
 
 </div>
+
+<script>
+function checkCode(){
+    var code = document.getElementById("passCode").value;
+
+    if(code === "114"){
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+    }else{
+        document.getElementById("error").innerText = "❌ Mã truy cập không đúng";
+    }
+}
+</script>
 
 </body>
 </html>
